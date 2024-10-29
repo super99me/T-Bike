@@ -1,0 +1,55 @@
+<div
+  class=""
+  id="modallogin"
+>
+  <div
+    class="modal-dialog modal-fullscreen-md-down modal-md modal-dialog-centered"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5">Đăng nhập</h2>
+        <button 
+          class="btn-close"
+          aria-label="Close" (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="login-detail">
+          <div class="login-form p-0">
+            <div class="col-lg-12 mx-auto">
+              <form id="login-form">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Tên đăng nhập"
+                  class="mb-3 ps-3 text-input"
+                />
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Mật khẩu"
+                  class="ps-3 text-input"
+                />
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer mt-4 d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-red hvr-sweep-to-right dark-sweep"
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-gray hvr-sweep-to-right dark-sweep"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

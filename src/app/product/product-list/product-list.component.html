@@ -1,0 +1,151 @@
+<section class="py-md-5">
+  <!-- app.component.html -->
+  <div class="d-flex flex-column min-vh-100">
+    <!-- Nội Dung Chính -->
+    <div class="flex-grow-1">
+      <div class="container mt-4">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Trang Chủ</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {{this.comSer.category}}
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Danh Sách Thương Hiệu -->
+        <div class="border rounded p-3 mb-4">
+          <h5 class="fw-bold mb-3">Thương Hiệu</h5>
+          <div class="row row-cols-2 row-cols-md-6 g-3">
+            <div class="col" *ngFor="let brand of brands">
+              <div class="card text-center p-2 shadow-sm">
+                <img
+                  [src]="brand.logo"
+                  class="card-img-top mb-2"
+                  alt="{{ brand.name }}"
+                  style="height: 60px; object-fit: contain"
+                />
+                <h6 class="card-title">{{ brand.name }}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bộ Lọc Sản Phẩm -->
+        <div class="border rounded p-3 mb-4">
+          <h5 class="fw-bold mb-3">Bộ Lọc Sản Phẩm</h5>
+          <form (submit)="applyFilters()">
+            <div class="row g-3">
+              <div class="col-md-3">
+                <label for="minPrice" class="form-label">Giá Tối Thiểu</label>
+                <input
+                  type="number"
+                  id="minPrice"
+                  class="form-control"
+                  [(ngModel)]="filters.minPrice"
+                  name="minPrice"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="maxPrice" class="form-label">Giá Tối Đa</label>
+                <input
+                  type="number"
+                  id="maxPrice"
+                  class="form-control"
+                  [(ngModel)]="filters.maxPrice"
+                  name="maxPrice"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="size" class="form-label">Kích Thước</label>
+                <select
+                  id="size"
+                  class="form-select"
+                  [(ngModel)]="filters.size"
+                  name="size"
+                >
+                  <option value="" disabled selected>Chọn kích thước</option>
+                  <option *ngFor="let size of sizes" [value]="size">
+                    {{ size }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">
+                  Tìm Kiếm
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Danh Sách Sản Phẩm -->
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <div class="col" *ngFor="let product of products">
+            <div class="card h-100 shadow-sm position-relative product-card">
+              <!-- Hình ảnh sản phẩm -->
+              <div class="card-img-wrapper">
+                <img
+                  [src]="product.image"
+                  class="card-img-top product-image"
+                  alt="{{ product.name }}"
+                />
+        
+                <!-- Nút chức năng (Hiện khi hover) -->
+                <div class="cart-concern d-flex justify-content-center align-items-center gap-3">
+                  <button class="btn btn-icon" (click)="this.comSer.addCart(product, this.type)">
+                    <svg class="shopping-carriage">
+                      <use xlink:href="#shopping-carriage"></use>
+                    </svg>
+                  </button>
+                  <button class="btn btn-icon" (click)="this.comSer.detailProduct(product.id, this.type)">
+                    <svg class="quick-view">
+                      <use xlink:href="#quick-view"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+        
+              <!-- Nội dung sản phẩm -->
+              <div class="card-body text-center">
+                <h6 class="card-title fs-6 fw-normal m-0" >
+                  {{ product.name }}
+                </h6>
+                <p class="text-danger fw-bold mb-1">
+                  {{ product.price | currency: 'VND' }}
+                </p>
+                <p class="text-muted">
+                  <del *ngIf="product.originalPrice">
+                    {{ product.originalPrice | currency: 'VND' }}
+                  </del>
+                  <span *ngIf="product.discount" class="badge bg-warning text-dark ms-2">
+                    Giảm {{ product.discount }}%
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+
+        <!-- Phân trang -->
+        <!-- <div class="d-flex justify-content-center mt-4">
+          <ngb-pagination
+            [(page)]="currentPage"
+            [pageSize]="itemsPerPage"
+            [collectionSize]="totalItems"
+            (pageChange)="onPageChange($event)"
+          >
+          </ngb-pagination>
+        </div> -->
+
+
+      </div>
+    </div>
+  </div>
+</section>

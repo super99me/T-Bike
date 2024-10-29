@@ -1,0 +1,130 @@
+.breadcrumb {
+  background-color: transparent;
+  padding: 0;
+}
+
+.card-title {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.text-danger {
+  font-size: 1.2rem;
+}
+
+// .pagination {
+//   display: flex;
+//   justify-content: center;
+// }
+
+// .pagination-controls {
+//   margin-top: 1rem;
+// }
+
+// .page-item.active .page-link {
+//   background-color: #0d6efd;
+//   border-color: #0d6efd;
+// }
+
+.card-title {
+  letter-spacing: 0 !important;
+  color: var(--bs-card-title-color);
+}
+
+.product-card {
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.1);
+}
+
+.cart-concern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+.product-card:hover .cart-concern {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-concern button {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+}
+
+.cart-concern button:hover {
+  background-color: #f8f9fa;
+}
+
+/* Nút có kích thước đồng nhất và tròn */
+.btn-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon:hover {
+  background-color: #e9ecef;
+  transform: scale(1.1);
+}
+
+/* Đảm bảo khoảng cách đều và căn giữa */
+.cart-concern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 15px; /* Khoảng cách giữa các nút */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+}
+
+/* Hiển thị nút khi hover vào sản phẩm */
+.product-card:hover .cart-concern {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SVG đồng nhất kích thước */
+svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+

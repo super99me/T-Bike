@@ -1,0 +1,148 @@
+<section class="product-store py-2 my-2 pt-0 py-md-3 my-md-3">
+  <div class="container my-4">
+    <div class="row">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Trang Chủ</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a
+              [routerLink]="['/danh-sach', type]"
+              routerLinkActive="router-link-active"
+              >{{ this.comSer.category }}</a
+            >
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Chi Tiết Sản Phẩm
+          </li>
+        </ol>
+      </nav>
+
+      <!-- Phần hình ảnh và các lựa chọn màu sắc -->
+      <div class="col-md-6">
+        <img
+          src="assets/samsung-s24.jpg"
+          class="img-fluid rounded shadow"
+          alt="Samsung Galaxy S24 Ultra"
+        />
+      </div>
+
+      <!-- Phần thông tin sản phẩm -->
+      <div class="col-md-6">
+        <h3>
+          Xe Đạp Địa Hình Fascino FS126S 26 Inch
+          <button class="btn btn-outline-danger flex-grow-1" (click)="navigateToComparison(model)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-plus"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"
+              />
+            </svg>
+            So sánh
+          </button>
+        </h3>
+        <p class="text-danger fs-4">
+          2.490.000 ₫ <del class="text-muted fs-6">2.690.000 ₫</del>
+        </p>
+
+        <!-- Nút màu sắc -->
+        <div class="mt-2">
+          <button class="btn btn-outline-secondary me-2">Vàng</button>
+          <button class="btn btn-outline-secondary me-2">Xám</button>
+          <button class="btn btn-outline-secondary">Đen</button>
+        </div>
+
+        <!-- Nút mua và thêm vào giỏ hàng trên cùng một hàng -->
+        <div class="d-flex gap-2 mb-3 mt-3 align-items-center">
+          <!-- Nút MUA NGAY -->
+          <button
+            class="btn btn-primary flex-grow-1 rounded-pill"
+            (click)="this.comSer.addCart(this.model, this.type)"
+          >
+            MUA NGAY
+          </button>
+
+          <!-- Nút Thêm vào giỏ (chỉ icon) -->
+          <button
+            class="btn btn-outline-primary rounded-circle d-flex align-items-center justify-content-center"
+            style="width: 50px; height: 50px;"
+            (click)="this.comSer.addCart(this.model, this.type)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
+              />
+            </svg>
+          </button>
+        </div>
+        
+
+        <h5 class="mt-4">Thông tin sản phẩm</h5>
+        <ul>
+          <li>Điện thoại thông minh thế hệ mới.</li>
+          <li>Bảo hành 12 tháng.</li>
+          <li>Hỗ trợ trả góp 10%.</li>
+        </ul>
+
+        <h5 class="mt-4">Khuyến mãi</h5>
+        <ul>
+          <li>Giảm 1.000.000₫ qua QR bank.</li>
+          <li>Tặng Galaxy Fit 3 khi mua cùng điện thoại.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="row">
+      <!-- Đặc điểm nổi bật -->
+      <div class="col-md-7">
+        <h4>Đặc Điểm Nổi Bật</h4>
+        <p
+          id="featureText"
+          class="feature-text"
+          [ngClass]="{ expanded: showFeatures }"
+        >
+          Trải nghiệm hiệu năng cao với chip Snapdragon 8 Gen 3...
+          <span *ngIf="showFeatures">
+            ...Camera chính: 200MP, zoom quang học 10x...
+          </span>
+        </p>
+        <button class="btn btn-link" (click)="toggleFeatures()">
+          {{ showFeatures ? "Ẩn bớt" : "Xem thêm" }}
+        </button>
+      </div>
+      <div class="col-md-5">
+        <h4>Thông số kỹ thuật</h4>
+        <div class="specs-container shadow-sm rounded">
+          <ul class="list-group" id="specsText">
+            <li class="list-group-item">
+              Kích thước màn hình: <strong>6.8 inches</strong>
+            </li>
+            <li class="list-group-item">
+              Công nghệ màn hình: <strong>Dynamic AMOLED 2X</strong>
+            </li>
+            <!-- Thêm các thông số khác ở đây -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

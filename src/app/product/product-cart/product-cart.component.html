@@ -1,0 +1,126 @@
+<div class="">
+  <div class="">
+    <div class="modal-header">
+      <h2 class="modal-title fs-5">Giỏ Hàng</h2>
+      <button
+        class="btn-close"
+        aria-label="Close"
+        (click)="closeModal()"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="shopping-cart">
+        <div class="shopping-cart-content" *ngIf="lstCarts.length > 0">
+          <div
+            class="mini-cart cart-list p-0 mt-3"
+            *ngFor="let item of lstCarts"
+          >
+            <div class="mini-cart-item d-flex border-bottom pb-3">
+              <div class="col-lg-2 col-md-3 col-sm-2 me-4">
+                <a href="#" title="product-image">
+                  <img
+                    src="{{ item.image }}"
+                    class="img-fluid"
+                    alt="{{ item.name }}"
+                  />
+                </a>
+              </div>
+              <div class="col-lg-9 col-md-8 col-sm-8">
+                <div
+                  class="product-header d-flex justify-content-between align-items-center mb-3"
+                >
+                  <h4
+                    class="product-title fs-6 me-5"
+                    style="cursor: pointer"
+                    (click)="detail(item.id, item.type)"
+                  >
+                    {{ item.name }}
+                  </h4>
+                  <a
+                    class="remove"
+                    aria-label="Remove this item"
+                    (click)="removeItem(item)"
+                  >
+                    <svg class="close">
+                      <use xlink:href="#close"></use>
+                    </svg>
+                  </a>
+                </div>
+
+                <div
+                  class="quantity-price d-flex justify-content-between align-items-center"
+                >
+                  <div class="input-group product-qty">
+                    <button
+                      type="button"
+                      class="quantity-left-minus btn btn-light rounded-0 rounded-start btn-number"
+                      (click)="decreaseQuantity(item)"
+                    >
+                      <svg width="16" height="16">
+                        <use xlink:href="#minus"></use>
+                      </svg>
+                    </button>
+                    <input
+                      type="text"
+                      name="quantity"
+                      class="form-control input-number quantity"
+                      min="1"
+                      [(ngModel)]="item.quantity"
+                      (ngModelChange)="onQuantityChange(item)"
+                    />
+                    <button
+                      type="button"
+                      class="quantity-right-plus btn btn-light rounded-0 rounded-end btn-number"
+                      (click)="increaseQuantity(item)"
+                    >
+                      <svg width="16" height="16">
+                        <use xlink:href="#plus"></use>
+                      </svg>
+                    </button>
+                  </div>
+                  <div class="price-code">
+                    <span class="product-price fs-6">
+                      {{ item.price | currency : "VND" }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-cart-total d-flex justify-content-between py-4">
+            <span class="fs-6">Tổng Tiền:</span>
+            <span class="special-price-code">
+              <span class="price-amount amount fs-6" style="opacity: 1">
+                <bdi> {{ totalPrice | currency : "VND" }} </bdi>
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="shopping-cart-content" *ngIf="lstCarts.length <= 0">
+          <div class="text-center fs-3 fw-bold text-uppercase">
+            <h4>Không có sản phẩm!</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer justify-content-center">
+        <button
+          class="btn btn-red hvr-sweep-to-right dark-sweep"
+          (click)="getListProductCart()"
+          *ngIf="lstCarts.length > 0"
+        >
+          Xem Giỏ Hàng
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-gray hvr-sweep-to-right dark-sweep"
+          *ngIf="lstCarts.length > 0"
+        >
+          Thanh Toán
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

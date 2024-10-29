@@ -1,0 +1,155 @@
+<section class="product-store py-2 my-2 pt-0 py-md-3 my-md-3">
+  <div class="container my-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Trang Chủ</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a [routerLink]="['/danh-sach', type]">
+            {{ this.comSer.category }}
+          </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          So Sánh Sản Phẩm
+        </li>
+      </ol>
+    </nav>
+
+    <div class="row mb-4">
+      <div *ngFor="let product of products" class="col-md-4 mb-4">
+        <div class="card shadow-sm text-center">
+          <img
+            [src]="product.image"
+            class="card-img-top"
+            [alt]="product.name"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-danger">
+              {{ product.price | currency : "VND" }}
+            </p>
+            <button class="btn btn-danger" (click)="removeProduct(product)">
+              Mua Ngay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="mt-5">Chọn sản phẩm để so sánh</h4>
+    <button
+      class="btn btn-outline-primary mb-3"
+      (click)="openProductSearchPopup(content)"
+    >
+      Thêm sản phẩm
+    </button>
+
+    <h4 class="mt-5">Thông Tin Sản Phẩm</h4>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>SKU</td>
+          <td>16T25</td>
+        </tr>
+        <tr>
+          <td>Màu sắc</td>
+          <td>Đỏ, Xám, Xanh dương</td>
+        </tr>
+        <tr>
+          <td>Khung sườn</td>
+          <td>Hợp kim thép</td>
+        </tr>
+        <tr>
+          <td>Càng/Phuộc xe</td>
+          <td>Hợp kim thép</td>
+        </tr>
+        <tr>
+          <td>Ghi đông</td>
+          <td>Hợp kim thép</td>
+        </tr>
+        <tr>
+          <td>Pô tăng/cổ xe</td>
+          <td>Hợp kim thép</td>
+        </tr>
+        <tr>
+          <td>Hệ thống phanh</td>
+          <td>Phanh gôm, Phanh đùm</td>
+        </tr>
+        <tr>
+          <td>Đùm xe</td>
+          <td>Hợp kim thép, Bi côn</td>
+        </tr>
+        <tr>
+          <td>Vành xe</td>
+          <td>Hợp kim nhôm</td>
+        </tr>
+        <tr>
+          <td>Lốp xe</td>
+          <td>16x2.125</td>
+        </tr>
+        <tr>
+          <td>Đùi đĩa</td>
+          <td>Hợp kim thép, Bi côn</td>
+        </tr>
+        <tr>
+          <td>Dĩa</td>
+          <td>1 tầng</td>
+        </tr>
+        <tr>
+          <td>Trọng lượng xe</td>
+          <td>10kg</td>
+        </tr>
+        <tr>
+          <td>Trọng lượng thùng</td>
+          <td>90x20x51</td>
+        </tr>
+        <tr>
+          <td>Yên</td>
+          <td>Borgki</td>
+        </tr>
+        <tr>
+          <td>Cọc/cốt yên</td>
+          <td>Hợp kim thép</td>
+        </tr>
+        <tr>
+          <td>Chiều cao phù hợp</td>
+          <td>Từ 1m05 - 1m20</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Popup tìm kiếm sản phẩm -->
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Chọn sản phẩm để thêm vào so sánh</h4>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input
+          type="text"
+          class="form-control mb-2"
+          placeholder="Tìm kiếm sản phẩm..."
+          [(ngModel)]="searchTerm"
+          (input)="filterProducts()"
+        />
+        <ul class="list-group">
+          <li
+            *ngFor="let product of filteredProducts"
+            class="list-group-item"
+            (click)="addProductToComparison(product); modal.dismiss()"
+          >
+            {{ product.name }}
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</section>

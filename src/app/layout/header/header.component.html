@@ -1,0 +1,131 @@
+<header id="header" class="site-header text-black sticky-top">
+  <nav id="header-nav" class="navbar navbar-expand-lg">
+    <div class="container-lg">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/logo.jpg" class="logo" alt="logo" />
+      </a>
+      <button
+        class="navbar-toggler d-flex d-lg-none order-3 border-0 p-1 ms-2"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#bdNavbar"
+        aria-controls="bdNavbar"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <svg class="navbar-icon">
+          <use xlink:href="#navbar-icon"></use>
+        </svg>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar">
+        <div class="offcanvas-header px-4 pb-0">
+          <a class="navbar-brand ps-3" href="#">
+            <img src="assets/images/logo.jpg" class="logo" alt="logo" />
+          </a>
+          <button
+            type="button"
+            class="btn-close btn-close-black p-5"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+            data-bs-target="#bdNavbar"
+          ></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul
+            id="navbar"
+            class="navbar-nav fw-bold justify-content-end align-items-center flex-grow-1"
+          >
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link me-5 active dropdown-toggle border-0"
+                href="#"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Sản phẩm</a
+              >
+              <ul class="dropdown-menu fw-bold">
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.TreEm)" class="dropdown-item">Xe đạp trẻ em</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.TheThao)" class="dropdown-item">Xe đạp thể thao</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.DiaHinh)" class="dropdown-item">Xe đạp địa hình</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.Touring)" class="dropdown-item">Xe đạp touring</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.Dua)" class="dropdown-item">Xe đạp đua</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.PhoThong)" class="dropdown-item">Xe đạp phổ thông</a>
+                </li>
+                <li>
+                  <a (click)="getProducts(constant.TypeProduct.Dien)" class="dropdown-item">Xe đạp điện</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-5" (click)="getProducts(constant.TypeProduct.ThuongHieu)">Thương hiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-5" (click)="getProducts(constant.TypeProduct.PhuKien)">Phụ kiện xe</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link me-5 active dropdown-toggle border-0"
+                href="#"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Khuyến mại</a
+              >
+              <ul class="dropdown-menu fw-bold">
+                <li>
+                  <a href="#" class="dropdown-item">Khuyến mại xe đạp</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Khuyến mại phụ kiện</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="user-items ps-0 ps-md-5">
+        <ul
+          class="d-flex justify-content-end list-unstyled align-item-center m-0"
+        >
+          <li class="pe-3">
+            <a class="border-0" (click)="openModalLogin()">
+              <svg class="user" width="24" height="24">
+                <use xlink:href="#user"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="pe-3">
+            <a class="border-0" (click)="openModalCart()">
+              <svg class="shopping-cart" width="24" height="24">
+                <use xlink:href="#shopping-cart"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="search-item border-0"
+              data-bs-toggle="collapse"
+              data-bs-target="#search-box"
+              aria-label="Toggle navigation"
+            >
+              <svg class="search" width="24" height="24">
+                <use xlink:href="#search"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
